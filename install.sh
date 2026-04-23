@@ -10,6 +10,12 @@ UQMI_STATUS_DEST="/usr/bin/uqmi_status.sh"
 
 echo "Installing Almond LCD Menu..."
 
+# Backup existing lcd_ui.uc if it exists
+if [ -f "$LCD_UI_DEST" ]; then
+    echo "Backing up existing lcd_ui.uc..."
+    cp "$LCD_UI_DEST" "${LCD_UI_DEST}.bak"
+fi
+
 # Download lcd_ui.uc
 echo "Downloading lcd_ui.uc..."
 wget -O "$LCD_UI_DEST" "$REPO_URL/lcd_ui.uc"
